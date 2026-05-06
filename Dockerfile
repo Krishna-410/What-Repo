@@ -16,5 +16,8 @@ COPY . .
 # Expose port 7860 (Hugging Face strictly requires this port)
 EXPOSE 7860
 
-# Command to run your FastAPI app (accounting for your back_end folder!)
-CMD ["uvicorn", "back_end.main:app", "--host", "0.0.0.0", "--port", "7860"]
+# Move into the back_end folder before starting the server
+WORKDIR /app/back_end
+
+# Run the app directly from inside that folder
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "7860"]
