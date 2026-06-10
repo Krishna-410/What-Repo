@@ -138,8 +138,7 @@ function startAnalysis() {
 // ─────────────────────────────────────────────
 async function connectToBackend(repoUrl) {
   try {
-   //const response = await fetch('http://localhost:8000/init-repo', {
-    const response = await fetch('/init-repo', {
+    const response = await fetch('http://localhost:8000/init-repo', {
       method:  'POST',
       headers: { 'Content-Type': 'application/json' },
       body:    JSON.stringify({ url: repoUrl }),
@@ -418,8 +417,7 @@ async function sendMessage() {
   let fullMarkdown  = '';
 
   try {
-    //const response = await fetch('http://localhost:8000/chat', {
-    const response = await fetch('/chat', {
+    const response = await fetch('http://localhost:8000/chat', {
       method:  'POST',
       headers: { 'Content-Type': 'application/json' },
       body:    JSON.stringify({ message: text }),

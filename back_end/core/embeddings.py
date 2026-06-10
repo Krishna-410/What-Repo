@@ -28,10 +28,7 @@ class _SFRCodeEmbeddings(Embeddings):
     def __init__(self, model_path='Salesforce/SFR-Embedding-Code-400M_R'):
         print("Loading local SFR Code Model to GPU via ST...")
 
-        #self.model = SentenceTransformer(model_path, device='cuda', trust_remote_code=True)
-        # Automatically detect the hardware
-        hardware_device = "cuda" if torch.cuda.is_available() else "cpu"
-        self.model = SentenceTransformer(model_path, device=hardware_device, trust_remote_code=True)
+        self.model = SentenceTransformer(model_path, device='cuda', trust_remote_code=True)
         self.model.max_seq_length = 1024
         self.model[0].auto_model.register_forward_pre_hook(_inject_position_ids_hook, with_kwargs=True)
 
